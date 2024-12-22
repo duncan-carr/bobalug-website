@@ -28,6 +28,10 @@
 		"vite": "^5.4.11"
 	},
 	"dependencies": {
-		"@tailwindcss/forms": "^0.5.9"
+		"@oslojs/crypto": "^1.0.1",
+		"@oslojs/encoding": "^1.1.0",
+		"@supabase/supabase-js": "^2.47.10",
+		"@tailwindcss/forms": "^0.5.9",
+		"arctic": "^2.3.3"
 	}
 }

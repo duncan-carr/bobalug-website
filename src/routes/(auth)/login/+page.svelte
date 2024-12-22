@@ -1,6 +1,13 @@
 <script lang="ts">
-    
+
 </script>
+
+<div class="absolute top-5 left-5">
+    <a href="/" class="text-foreground-muted group flex items-center gap-3">
+        <i class="fa-light fa-arrow-left"></i>
+        <span class="group-hover:underline">Back to Home</span>
+    </a>
+</div>
 
 <div class="w-full h-screen flex items-center justify-center">
     <div class="border border-foreground-muted rounded-md px-4 py-2 w-96">
@@ -15,7 +22,7 @@
             <span class="font-titles text-xl">Step One - Connect Your Discord Account</span>
         </div>
 
-        <a href="/" class="w-full justify-center border rounded-md py-1 mb-2 flex items-center gap-3 hover:bg-foreground-muted hover:bg-opacity-15 transition-all">
+        <a href="/login/discord" class="w-full justify-center border rounded-md py-1 mb-2 flex items-center gap-3 hover:bg-foreground-muted hover:bg-opacity-15 transition-all">
             <i class="fa-brands fa-discord"></i>
             <span>Connect Your Discord</span>
         </a>

@@ -1,10 +1,10 @@
+import { getAvatarUrl } from '$lib/util.js';
+
 export async function load({ locals, fetch }) {
     const user = locals.user;
     if (!user) {
-        return { user: null };
+        return { user: null, avatarUrl: null };
     }
 
-    
-
-    return { user: locals.user };
+    return { user, avatarUrl: getAvatarUrl(user) };
 }

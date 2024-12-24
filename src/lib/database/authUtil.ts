@@ -101,6 +101,22 @@ export async function getUserFromDiscordId(discordId: string): Promise<User | nu
 	return user;
 }
 
+export async function getUserFromUsername(username: string): Promise<User | null> {
+	const { data: userData, error } = await supabase.from("app_user").select("*").eq("username", username).single();
+	if (error || !userData) {
+		return null;
+	}
+
+	const user: User = {
+		id: userData.id,
+		discordId: userData.discord_id,
+		username: userData.username,
+		avatar: userData.discord_avatar
+	}
+
+	return user;
+}
+
 export async function createUser(discordId: string, username: string, avatar: string | null): Promise<User> {
 	const { error } = await supabase.from("app_user").insert({ discord_id: discordId, username, discord_avatar: avatar }).single();
 

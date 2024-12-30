@@ -2,7 +2,7 @@
 	let { children, data } = $props();
 </script>
 
-<nav class="p-4 flex items-center justify-between sticky top-0 z-50 bg-background bg-opacity-80 backdrop-blur-xl">
+<nav class="p-4 flex items-center justify-between sticky top-0 z-50 bg-background bg-opacity-50 backdrop-blur-xl">
 	<a href="/" class="flex items-center gap-3">
 		<img class="size-10 p-1 bg-accent rounded-md" src="https://utfs.io/f/8H5BXZPIZvSNceHOtNXwB2ft7V3QYduRXqLm4yHvlaoWU9s1" alt="Logo" />
 		<h3 class="font-titles text-4xl">BobaLUG</h3>

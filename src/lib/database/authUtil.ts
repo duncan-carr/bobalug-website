@@ -57,7 +57,16 @@ export async function validateSessionToken(token: string): Promise<SessionValida
 		id: userData.id,
 		discordId: userData.discord_id,
 		username: userData.username,
-		avatar: userData.discord_avatar
+		avatar: userData.discord_avatar,
+		firstName: userData.first_name,
+		lastName: userData.last_name,
+		showName: userData.show_name,
+		birthday: userData.birthday,
+		showBirthday: userData.show_birthday,
+		country: userData.country,
+		about: userData.about,
+		showcaseUrl: userData.showcase_url,
+		lastUpdated: new Date(userData.last_updated)
 	}
 
     return { session, user };
@@ -95,7 +104,16 @@ export async function getUserFromDiscordId(discordId: string): Promise<User | nu
 		id: userData.id,
 		discordId: userData.discord_id,
 		username: userData.username,
-		avatar: userData.discord_avatar
+		avatar: userData.discord_avatar,
+		firstName: userData.first_name,
+		lastName: userData.last_name,
+		showName: userData.show_name,
+		birthday: userData.birthday,
+		showBirthday: userData.show_birthday,
+		country: userData.country,
+		about: userData.about,
+		showcaseUrl: userData.showcase_url,
+		lastUpdated: new Date(userData.last_updated)
 	}
 
 	return user;
@@ -111,7 +129,16 @@ export async function getUserFromUsername(username: string): Promise<User | null
 		id: userData.id,
 		discordId: userData.discord_id,
 		username: userData.username,
-		avatar: userData.discord_avatar
+		avatar: userData.discord_avatar,
+		firstName: userData.first_name,
+		lastName: userData.last_name,
+		showName: userData.show_name,
+		birthday: userData.birthday,
+		showBirthday: userData.show_birthday,
+		country: userData.country,
+		about: userData.about,
+		showcaseUrl: userData.showcase_url,
+		lastUpdated: new Date(userData.last_updated)
 	}
 
 	return user;
@@ -137,7 +164,16 @@ export async function createUser(discordId: string, username: string, avatar: st
 		id: userData.id,
 		discordId: userData.discord_id,
 		username: userData.username,
-		avatar: userData.discord_avatar
+		avatar: userData.discord_avatar,
+		firstName: userData.first_name,
+		lastName: userData.last_name,
+		showName: userData.show_name,
+		birthday: userData.birthday,
+		showBirthday: userData.show_birthday,
+		country: userData.country,
+		about: userData.about,
+		showcaseUrl: userData.showcase_url,
+		lastUpdated: new Date(userData.last_updated)
 	}
 
 	return user;
@@ -159,6 +195,15 @@ export interface User {
 	discordId: string;
 	username: string;
 	avatar: string | null;
+	firstName: string | null;
+	lastName: string | null;
+	showName: boolean | null;
+	birthday: string | null;
+	showBirthday: boolean | null;
+	country: string | null;
+	about: string | null;
+	showcaseUrl: string | null;
+	lastUpdated: Date;
 }
 
 export const discord = new Discord(DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET, "http://localhost:5173/login/discord/callback");

@@ -3,13 +3,17 @@
 	import RoleCard from '$lib/components/RoleCard.svelte';
 
     let { data } = $props();
+
+    const lastSynced = data.user.lastUpdated;
+
+    // date formatter that formats the date to 
 </script>
 
 <svelte:head>
-    <title>BobaLUG - Account</title>
+    <title>BobaLUG - Account Settings</title>
 </svelte:head>
 
-<div class="px-10 py-5">
+<div class="px-10 py-5 pb-10">
     <div class="flex items-center justify-between pb-4">
         <h4 class="font-titles text-2xl pt-4 pb-2">Manage Your Account</h4>
 
@@ -34,7 +38,7 @@
                 <h2 class="font-titles">Synced via Discord</h2>
             </div>
             <div class="bg-discord rounded-b-md px-3 py-1">
-                <div class="flex items-center gap-4 py-4 px-2">
+                <div class="flex items-center gap-4 py-6 px-2">
                     <img class="size-14 rounded-full" src="{data.avatarUrl}" alt="Profile Pic">
 
                     <label class="flex flex-col gap-0.5 w-96">
@@ -50,27 +54,56 @@
                         </div>
                     </div>
                 </div>
-                
-                
-                <p class="text-sm py-1 text-foreground-muted">This information is synced through your Discord account, and cannot be changed here.</p>
+
+                <div class="flex items-center justify-between text-sm pb-1">
+                    <span class="text-foreground-muted">To resync, sign out and sign back in.</span>
+                    <p class="text-foreground-muted">Last synced on {lastSynced.toLocaleDateString()} at {lastSynced.toLocaleTimeString()}.</p>
+                </div>
             </div>
         </div>
 
-        
+        <h4 class="font-titles text-2xl py-2">Profile Settings</h4>
 
-        <form class="flex flex-col gap-4" method="post" enctype="multipart/form-data">
-            <label class="flex flex-col gap-0.5">
-                <span class="text-sm">Display Name</span>
-                <input class="bg-background rounded-md text-sm" type="text">
-            </label>
-            <label class="flex flex-col gap-0.5">
-                <span class="text-sm">Role <span class="text-foreground-muted">- Your role(s) are automatically synced via Discord. If you believe you have an incorrect role, contact Andrew.</span></span>
-                <input class="bg-background rounded-md text-sm hover:cursor-not-allowed" type="text" disabled>
-            </label>
-            <label class="flex flex-col gap-0.5">
-                <span class="text-sm">Instagram <span class="text-foreground-muted">(optional)</span></span>
-                <input class="bg-background rounded-md text-sm" type="text">
-            </label>
+        <form class="w-full flex flex-col gap-8" method="post" enctype="multipart/form-data" action="?/save">
+            <div class="w-full flex gap-8">
+                <div class="flex flex-col gap-4 w-fit">
+                    <div class="flex gap-4 w-full">
+                        <label class="flex flex-col gap-0.5">
+                            <span class="text-sm">First Name</span>
+                            <input name="first_name" class="bg-background rounded-md text-sm w-52" type="text" bind:value={data.user.firstName}>
+                        </label>
+                        <label class="flex flex-col gap-0.5">
+                            <span class="text-sm">Last Name</span>
+                            <input name="last_name" class="bg-background rounded-md text-sm w-52" type="text" bind:value={data.user.lastName}>
+                        </label>
+                    </div>
+                    <label class="flex items-center gap-2">
+                        <input name="show_name" class="bg-background rounded-md text-sm" type="checkbox" bind:checked={data.user.showName}>
+                        <span class="text-sm">Show name on public profile</span>
+                    </label>
+                    
+                    <label class="flex flex-col gap-0.5">
+                        <span class="text-sm">Birthday</span>
+                        <input name="birthday" type="date" class="bg-background rounded-md text-sm w-52" bind:value={data.user.birthday}>
+                    </label>
+                    <label class="flex items-center gap-2">
+                        <input name="show_birthday" class="bg-background rounded-md text-sm" type="checkbox" bind:checked={data.user.showBirthday}>
+                        <span class="text-sm">Show birthday on public profile</span>
+                    </label>
+        
+                    <label class="flex flex-col gap-0.5">
+                        <span class="text-sm">Country</span>
+                        <input name="country" class="bg-background rounded-md text-sm w-52" type="text" bind:value={data.user.country}>
+                    </label>
+                </div>
+                <div class="flex flex-col gap-4 w-full">
+                    <label class="flex flex-col gap-0.5">
+                        <span class="text-sm">About Me</span>
+                        <textarea name="about" class="bg-background rounded-md text-sm w-full h-24" bind:value={data.user.about}></textarea>
+                    </label>
+                </div>
+            </div>
+            <button class="w-fit font-titles text-xl px-4 py-1 bg-accent border border-accent rounded-md hover:bg-opacity-90 flex items-center gap-3 transition-all" type="submit">Save changes</button>
         </form>
     </div>
 </div>

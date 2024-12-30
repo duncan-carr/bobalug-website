@@ -1,4 +1,5 @@
 import { createSession, createUser, discord, generateSessionToken, getUserFromDiscordId, setSessionTokenCookie } from "$lib/database/authUtil.js";
+import { supabase } from "$lib/database/supabaseClient.js";
 import type { OAuth2Tokens } from "arctic";
 
 export async function GET(event): Promise<Response> {
@@ -45,6 +46,13 @@ export async function GET(event): Promise<Response> {
         const sessionToken = generateSessionToken();
         const session = await createSession(sessionToken, existingUser.id)
         setSessionTokenCookie(event, sessionToken, session.expiresAt)
+
+        const lastUpdated = new Date().toISOString();
+
+        const { error } = await supabase.from("app_user").update({ username: discordUsername, discord_avatar: discordAvatar, last_updated: lastUpdated }).match({ id: existingUser.id });
+        if (error) {
+            console.log(error);
+        }
 
         return new Response(null, {
             status: 302,

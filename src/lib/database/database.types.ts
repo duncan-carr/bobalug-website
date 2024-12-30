@@ -11,21 +11,48 @@ export type Database = {
     Tables: {
       app_user: {
         Row: {
+          about: string | null
+          birthday: string | null
+          country: string | null
           discord_avatar: string | null
           discord_id: string
+          first_name: string | null
           id: number
+          last_name: string | null
+          last_updated: string
+          show_birthday: boolean | null
+          show_name: boolean | null
+          showcase_url: string | null
           username: string
         }
         Insert: {
+          about?: string | null
+          birthday?: string | null
+          country?: string | null
           discord_avatar?: string | null
           discord_id: string
+          first_name?: string | null
           id?: number
+          last_name?: string | null
+          last_updated?: string
+          show_birthday?: boolean | null
+          show_name?: boolean | null
+          showcase_url?: string | null
           username: string
         }
         Update: {
+          about?: string | null
+          birthday?: string | null
+          country?: string | null
           discord_avatar?: string | null
           discord_id?: string
+          first_name?: string | null
           id?: number
+          last_name?: string | null
+          last_updated?: string
+          show_birthday?: boolean | null
+          show_name?: boolean | null
+          showcase_url?: string | null
           username?: string
         }
         Relationships: []

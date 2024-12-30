@@ -22,7 +22,7 @@
             <span class="font-titles text-xl">Step One - Connect Your Discord Account</span>
         </div>
 
-        <a href="/login/discord" class="w-full justify-center border rounded-md py-1 mb-2 flex items-center gap-3 hover:bg-foreground-muted hover:bg-opacity-15 transition-all">
+        <a href="/login/discord" class="w-full justify-center border rounded-md py-1 mb-2 flex items-center gap-3 bg-blurple border-blurple hover:bg-opacity-85 transition-all">
             <i class="fa-brands fa-discord"></i>
             <span>Connect Your Discord</span>
         </a>
